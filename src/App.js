@@ -1,23 +1,99 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ImageCard from "./components/ImageCard/ImageCard";
+
+const imageCardData = [
+  {
+    id: 1,
+    name: "Test name",
+    phoneNumber: "9999999999",
+    email: "test@email.com",
+    date: "5 July",
+    share: false,
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    name: "Test name",
+    phoneNumber: "9999999999",
+    email: "test@email.com",
+    date: "5 July",
+    share: false,
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    name: "Test name",
+    phoneNumber: "9999999999",
+    email: "test@email.com",
+    date: "5 July",
+    share: false,
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    name: "Test name",
+    phoneNumber: "9999999999",
+    email: "test@email.com",
+    date: "5 July",
+    share: false,
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    name: "Test name",
+    phoneNumber: "9999999999",
+    email: "test@email.com",
+    date: "5 July",
+    share: false,
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    name: "Test name",
+    phoneNumber: "9999999999",
+    email: "test@email.com",
+    date: "5 July",
+    share: false,
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    name: "Test name",
+    phoneNumber: "9999999999",
+    email: "test@email.com",
+    date: "5 July",
+    share: false,
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    name: "Test name",
+    phoneNumber: "9999999999",
+    email: "test@email.com",
+    date: "5 July",
+    share: false,
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    name: "Test name",
+    phoneNumber: "9999999999",
+    email: "test@email.com",
+    date: "5 July",
+    share: false,
+    image: "https://via.placeholder.com/150",
+  },
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="image-card-parent-container">
+        {" "}
+        {imageCardData.map((card, key) => (
+          <ImageCard key={key} cardDetails={card} />
+        ))}
+      </div>
     </div>
   );
 }
