@@ -5,20 +5,9 @@ import "./App.css";
 import ImageCard from "./components/ImageCard/ImageCard";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
-// import {
-//   fetchImages,
-//   deleteImage,
-//   uploadImage,
-//   updateImage,
-// } from "./apiService";
+
 // firebase
 import { getAuth } from "firebase/auth";
-// import {
-//   fetchImages,
-//   uploadImage,
-//   updateImage,
-//   deleteImage,
-// } from "./apiService";
 
 const imageCardData = [
   {
@@ -108,7 +97,7 @@ function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   // const [images, setImages] = useState([]);
   // const [newImage, setNewImage] = useState(null);
-  const [file, setFile] = useState(null); // Add state for file
+  const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
