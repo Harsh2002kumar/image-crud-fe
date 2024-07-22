@@ -5,9 +5,20 @@ import "./App.css";
 import ImageCard from "./components/ImageCard/ImageCard";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
-
+// import {
+//   fetchImages,
+//   deleteImage,
+//   uploadImage,
+//   updateImage,
+// } from "./apiService";
 // firebase
 import { getAuth } from "firebase/auth";
+// import {
+//   fetchImages,
+//   uploadImage,
+//   updateImage,
+//   deleteImage,
+// } from "./apiService";
 
 const imageCardData = [
   {
@@ -95,6 +106,10 @@ const imageCardData = [
 
 function App() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  // const [images, setImages] = useState([]);
+  // const [newImage, setNewImage] = useState(null);
+  const [file, setFile] = useState(null); // Add state for file
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const auth = getAuth();
@@ -109,6 +124,46 @@ function App() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    fetch("https://image-crud-be-o64a.onrender.com/fetch")
+      .then((data) => data.json())
+      .then((response) => console.log("response", response));
+  });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (file) {
+      const formData = new FormData();
+      formData.append("pic", file);
+
+      try {
+        const response = await fetch(
+          "https://image-crud-be.onrender.com/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        if (response.ok) {
+          const result = await response.json();
+          setMessage("Image uploaded successfully");
+          console.log("Image uploaded successfully:", result);
+        } else {
+          setMessage("Image upload failed");
+          console.error("Image upload failed:", response.statusText);
+        }
+      } catch (error) {
+        setMessage("Error uploading image");
+        console.error("Error uploading image:", error);
+      }
+    } else {
+      setMessage("No file selected");
+      console.error("No file selected");
+    }
+  };
 
   return (
     <div className="App">
