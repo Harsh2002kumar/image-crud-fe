@@ -15,6 +15,7 @@ function ImageUpload() {
     fetch(
       "https://image-crud-be-o64a.onrender.com/upload",
       {
+        mode: "no-cors",
         method: "POST",
         body: formData,
       },
