@@ -13,7 +13,7 @@ function ImageUpload() {
     formData.append("pic", file);
 
     fetch(
-      "https://image-crud-be.onrender.com/upload",
+      "https://image-crud-be-o64a.onrender.com/upload",
       {
         method: "POST",
         body: formData,
