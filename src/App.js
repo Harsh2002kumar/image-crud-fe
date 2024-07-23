@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 
 // firebase
 import { getAuth } from "firebase/auth";
+import ImageUpload from "./components/ImageUpload/ImageUpload";
 
 const imageCardData = [
   {
@@ -120,42 +121,43 @@ function App() {
       .then((response) => console.log("response", response));
   });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
 
-    if (file) {
-      const formData = new FormData();
-      formData.append("pic", file);
+  //   if (file) {
+  //     const formData = new FormData();
+  //     formData.append("pic", file);
 
-      try {
-        const response = await fetch(
-          "https://image-crud-be.onrender.com/upload",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+  //     try {
+  //       const response = await fetch(
+  //         "https://image-crud-be.onrender.com/upload",
+  //         {
+  //           method: "POST",
+  //           body: formData,
+  //         }
+  //       );
 
-        if (response.ok) {
-          const result = await response.json();
-          setMessage("Image uploaded successfully");
-          console.log("Image uploaded successfully:", result);
-        } else {
-          setMessage("Image upload failed");
-          console.error("Image upload failed:", response.statusText);
-        }
-      } catch (error) {
-        setMessage("Error uploading image");
-        console.error("Error uploading image:", error);
-      }
-    } else {
-      setMessage("No file selected");
-      console.error("No file selected");
-    }
-  };
+  //       if (response.ok) {
+  //         const result = await response.json();
+  //         setMessage("Image uploaded successfully");
+  //         console.log("Image uploaded successfully:", result);
+  //       } else {
+  //         setMessage("Image upload failed");
+  //         console.error("Image upload failed:", response.statusText);
+  //       }
+  //     } catch (error) {
+  //       setMessage("Error uploading image");
+  //       console.error("Error uploading image:", error);
+  //     }
+  //   } else {
+  //     setMessage("No file selected");
+  //     console.error("No file selected");
+  //   }
+  // };
 
   return (
     <div className="App">
+      <ImageUpload />
       {isUserLoggedIn ? (
         <div>
           <Navbar setIsUserLoggedIn={setIsUserLoggedIn} />
